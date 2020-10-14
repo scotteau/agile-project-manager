@@ -18,7 +18,7 @@ class Firebase {
     }
 
     doCreateUserWithEmailAndPassword = (email, password) => {
-        this.auth.createUserWithEmailAndPassword(email, password);
+        return this.auth.createUserWithEmailAndPassword(email, password);
     };
 
     doSignInWithEmailAndPassword = (email, password) => {
@@ -30,7 +30,7 @@ class Firebase {
     };
 
     doSignOut = () => {
-        this.auth.signOut();
+        return this.auth.signOut();
     };
 
     doCreatePermanentAccountFromAnonymous(email, password) {

@@ -54,8 +54,7 @@ export const user = (state = initialUserState, action) => {
         }
         case USER_LOGOUT: {
             return {
-                ...state,
-                isLoggedIn: false,
+                ...initialUserState,
             };
         }
         case PROJECT_STAR_ADDED: {

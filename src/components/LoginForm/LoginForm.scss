@@ -88,7 +88,7 @@ $purple: #796eff;
       margin-bottom: 2.5rem;
     }
 
-    .loginAsAGuest {
+    .loginAsAGuest, .register {
       width: 60%;
       min-width: 18.75rem;
       @include buttonStyle;
@@ -104,6 +104,10 @@ $purple: #796eff;
       &:focus {
         outline: none;
       }
+    }
+
+    .register {
+      margin-top: 1rem;
     }
 
     .divider {

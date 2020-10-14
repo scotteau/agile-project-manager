@@ -1,7 +1,7 @@
 import React from "react";
 import "./LoginForm.css";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
-import {init_user_requested, login_guest, login_user} from "../../actions";
+import {init_user_requested, login_guest, login_user, should_show_register} from "../../actions";
 import {connect} from "react-redux";
 
 const LoginForm = ({
@@ -9,6 +9,7 @@ const LoginForm = ({
                        isLoading,
                        init_user_requested,
                        login_guest,
+                       should_show_register
                    }) => {
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -40,6 +41,10 @@ const LoginForm = ({
         }
     }
 
+    const register = (e) => {
+        should_show_register(true);
+    }
+
     return (
         <div className={"LoginForm"}>
             <div
@@ -56,6 +61,10 @@ const LoginForm = ({
                     <header>Welcome to Agilo</header>
                     <button className={"loginAsAGuest"} onClick={(e) => loginAsAGuest(e)}>
                         Login as a Guest
+                    </button>
+
+                    <button className={"register"} onClick={(e) => register(e)}>
+                        Register
                     </button>
 
                     <div className="divider">or</div>
@@ -111,4 +120,5 @@ export default connect(mapStateToProps, {
     login_user,
     init_user_requested,
     login_guest,
+    should_show_register
 })(LoginForm);

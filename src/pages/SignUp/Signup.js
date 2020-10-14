@@ -33,6 +33,10 @@ const SignUp = ({should_show_register, currentUser}) => {
             });
     }
 
+    React.useEffect(() => {
+        console.log(currentUser);
+    }, [])
+
     return (
         <div className="App-SignUp">
             <section className="content">

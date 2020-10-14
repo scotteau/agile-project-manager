@@ -63,7 +63,7 @@
   font-family: "Poppins", sans-serif;
   margin-bottom: 2.5rem;
 }
-.LoginForm__content .loginAsAGuest {
+.LoginForm__content .loginAsAGuest, .LoginForm__content .register {
   width: 60%;
   min-width: 18.75rem;
   padding: 0 1.5rem;
@@ -78,15 +78,18 @@
   background-color: #ffffff;
   color: #9ca6af;
 }
-.LoginForm__content .loginAsAGuest:hover {
+.LoginForm__content .loginAsAGuest:hover, .LoginForm__content .register:hover {
   cursor: pointer;
 }
-.LoginForm__content .loginAsAGuest:hover {
+.LoginForm__content .loginAsAGuest:hover, .LoginForm__content .register:hover {
   box-shadow: 0 11px 12px 0 rgba(36, 50, 66, 0.12);
   color: #796eff;
 }
-.LoginForm__content .loginAsAGuest:focus {
+.LoginForm__content .loginAsAGuest:focus, .LoginForm__content .register:focus {
   outline: none;
+}
+.LoginForm__content .register {
+  margin-top: 1rem;
 }
 .LoginForm__content .divider {
   color: #9ca6af;
