@@ -93,9 +93,6 @@ const ProfilePopup = ({
 };
 
 const mapStateToProps = (state) => {
-    console.log(state.workspace);
-    console.log(state.user.workspaces);
-    console.log(state.user.allWorkspaces);
     return {
         currentWorkspace: state.workspace,
         workspaces: state.user.workspaces,

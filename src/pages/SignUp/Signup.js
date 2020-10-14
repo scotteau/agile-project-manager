@@ -2,11 +2,11 @@ import React from "react";
 import "./SignUp.css";
 import TextField from "../../components/TextField/TextField";
 import {connect} from "react-redux";
-import {should_show_register} from "../../actions";
+import {create_account, init_user_requested, login_user, should_show_register} from "../../actions";
 import myFirebase from "../../Firebase/firebase";
 import {updateUserToServer} from "../../apis/api";
 
-const SignUp = ({should_show_register, currentUser}) => {
+const SignUp = ({should_show_register, currentUser, create_account, init_user_requested, login_user}) => {
     const [pending, setPending] = React.useState(false);
 
     function handleSubmit(event) {
@@ -16,21 +16,29 @@ const SignUp = ({should_show_register, currentUser}) => {
         const password = event.target["signup-password"].value;
         setPending(true);
 
-        myFirebase
-            .doCreatePermanentAccountFromAnonymous(email, password)
-            .then(async (userCredential) => {
-                const user = userCredential.user;
-                console.log("Anonymous account successfully upgraded, ", user);
+        if (currentUser.id) {
+            myFirebase
+                .doCreatePermanentAccountFromAnonymous(email, password)
+                .then(async (userCredential) => {
+                    const user = userCredential.user;
+                    console.log("Anonymous account successfully upgraded, ", user);
 
-                // update user's email
-                await updateUserToServer({...currentUser, email: email});
+                    // update user's email
+                    await updateUserToServer({...currentUser, email: email});
 
-                should_show_register(false);
-            })
-            .catch((error) => {
-                console.log("Error upgrading anonymous account, ", error);
-                setPending(false);
-            });
+                    should_show_register(false);
+                })
+                .catch((error) => {
+                    console.log("Error upgrading anonymous account, ", error);
+                    setPending(false);
+                });
+
+        } else {
+            should_show_register(false);
+            init_user_requested();
+            create_account({email, password});
+            login_user({username: email, password: password});
+        }
     }
 
     React.useEffect(() => {
@@ -69,4 +77,9 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, {should_show_register})(SignUp);
+export default connect(mapStateToProps, {
+    should_show_register,
+    create_account,
+    init_user_requested,
+    login_user
+})(SignUp);

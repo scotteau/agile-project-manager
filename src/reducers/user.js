@@ -1,13 +1,12 @@
 import {
     PROJECT_STAR_ADDED,
     PROJECT_STAR_REMOVED,
-    USER_LOGIN,
     USER_LOGOUT,
     INIT_USER_SUCCESS,
     INIT_USER_FAILED,
     PROJECT_DELETED,
     WORKSPACE_CHANGED,
-    GUEST_LOGIN, UPDATE_USER, CREATE_NEW_SHARED_WORKSPACE,
+    UPDATE_USER, CREATE_NEW_SHARED_WORKSPACE, CREATE_ACCOUNT, USER_LOGIN_SUCCESS, GUEST_LOGIN_SUCCESS,
 } from "../actions";
 import {updateUserToServer} from "../apis/api";
 
@@ -27,13 +26,13 @@ const initialUserState = {
 
 export const user = (state = initialUserState, action) => {
     switch (action.type) {
-        case USER_LOGIN: {
+        case USER_LOGIN_SUCCESS: {
             return {
                 ...state,
                 id: action.userId,
             };
         }
-        case GUEST_LOGIN: {
+        case GUEST_LOGIN_SUCCESS: {
             return {
                 ...state,
                 id: action.userId,
@@ -113,6 +112,13 @@ export const user = (state = initialUserState, action) => {
                 ...state,
                 workspaces: [...action.workspaces],
                 allWorkspaces: {...action.allWorkspaces}
+            }
+        }
+
+        case CREATE_ACCOUNT: {
+            return {
+                ...state,
+                id: action.userId
             }
         }
 

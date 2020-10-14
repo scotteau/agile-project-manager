@@ -41,7 +41,10 @@ import {
     SET_QUICK_FILTER,
     SHOULD_SHOW_REGISTER,
     SHOW_CREATE_WORKSPACE_POPUP,
-    HIDE_CREATE_WORKSPACE_POPUP, SHOW_INVITE_MEMBERS_POPUP, HIDE_INVITE_MEMBERS_POPUP,
+    HIDE_CREATE_WORKSPACE_POPUP,
+    SHOW_INVITE_MEMBERS_POPUP,
+    HIDE_INVITE_MEMBERS_POPUP,
+    USER_LOGIN_SUCCESS, GUEST_LOGIN_SUCCESS,
 } from "../actions";
 
 const initialAppState = {
@@ -135,6 +138,21 @@ export const app = (state = initialAppState, action) => {
                 ...state,
                 ui_isWorkspaceLoading: false,
             };
+        }
+
+
+        case USER_LOGIN_SUCCESS: {
+            return {
+                ...state,
+                ui_isWorkspaceLoading: false
+            }
+        }
+
+        case GUEST_LOGIN_SUCCESS: {
+            return {
+                ...state,
+                ui_isWorkspaceLoading: false
+            }
         }
 
         case PROJECT_SELECTED_REQUESTED: {
