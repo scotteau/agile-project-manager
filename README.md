@@ -1,7 +1,7 @@
 ## Agilo Board - (Asana Clone) - Ongoing Project
 JR Academy - 10th Full-stack Sydney Coding Bootcamp 
 
-[Live link: http://agile-project-manager-two.vercel.app/](http://agile-project-manager-two.vercel.app/)
+[Live link: https://agile-project-manager-one.vercel.app](https://agile-project-manager-one.vercel.app)
 
 ![screenshot01](https://user-images.githubusercontent.com/1281209/85357076-28ca3c00-b543-11ea-9541-48c849f800ec.png)
 ![screenshot02](https://user-images.githubusercontent.com/1281209/85357127-3b447580-b543-11ea-9315-6d6db96ac7bc.png)
